@@ -5,7 +5,8 @@ import {
   FaDribbble,
   FaInstagram,
   FaTwitter,
-  FaBehanceSquare
+  FaBehanceSquare,
+  FaBars
 } from 'react-icons/fa'
 
 const navigation = [
@@ -54,7 +55,7 @@ function Navigation() {
           ))}
         </div>
         <div className='logo'>
-          <a href=''>Logo</a>
+          <a href=''>MJ Graphics Design</a>
         </div>
         <div className='nav-right'>
           {socialNavigation.map((link, i) => (
@@ -64,13 +65,14 @@ function Navigation() {
           ))}
         </div>
       </div>
+
       {/* Mobile Menu */}
       <div className='navbar-mobile'>
         <div className='logo'>
-          <a href=''>Logo</a>
+          <a href=''>MJ Graphics Studio</a>
         </div>
         <div className='nav-right'>
-          <a href=''>Hamburger Menu</a>
+          <FaBars className='h-6 w-6' />
         </div>
       </div>
     </>
