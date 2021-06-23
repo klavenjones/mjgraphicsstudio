@@ -1,1 +1,29 @@
+.navbar-mobile,
+.navbar {
+  @apply w-full h-20 flex justify-between items-center py-3 px-4  md:px-10 lg:px-14;
+}
 
+.navbar-mobile {
+  @apply lg:hidden;
+}
+
+.navbar {
+  @apply hidden lg:flex;
+}
+
+.nav-right,
+.nav-left {
+  @apply flex items-center space-x-4;
+}
+
+.nav-right .icon {
+  @apply h-6 w-6;
+}
+
+.logo {
+  @apply text-center lg:flex-grow;
+}
+
+.fixed-top {
+  @apply fixed top-0;
+}
