@@ -1,4 +1,4 @@
-import React from 'react'
+import { useRef } from 'react'
 import Link from 'next/link'
 
 import {
@@ -44,6 +44,12 @@ const socialNavigation = [
 ]
 
 function Navigation() {
+  let menuButton = useRef(null)
+
+  const openMenu = () => {
+    menuButton.current.classList.toggle('change')
+  }
+
   return (
     <>
       <div className='navbar'>
@@ -72,7 +78,15 @@ function Navigation() {
           <a href=''>MJ Graphics Studio</a>
         </div>
         <div className='nav-right'>
-          <FaBars className='h-6 w-6' />
+          <div
+            className='hamburger'
+            ref={menuButton}
+            onClick={() => openMenu()}
+          >
+            <div className='hamburger__bar'></div>
+            <div className='hamburger__bar'></div>
+            <div className='hamburger__bar'></div>
+          </div>
         </div>
       </div>
     </>

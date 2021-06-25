@@ -1,6 +1,6 @@
 .navbar-mobile,
 .navbar {
-  @apply w-full h-20 flex justify-between items-center py-3 px-4  md:px-10 lg:px-14;
+  @apply w-full h-20 flex justify-between items-center py-12 px-4  md:px-10 lg:px-14;
 }
 
 .navbar-mobile {
@@ -26,4 +26,27 @@
 
 .fixed-top {
   @apply fixed top-0;
+}
+
+.hamburger {
+  width: 35px;
+  @apply space-y-2 cursor-pointer;
+}
+
+.hamburger__bar {
+  @apply w-full bg-black transition-all duration-200 rounded-md;
+  height: 2px;
+}
+
+.change .hamburger__bar:nth-child(1) {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+.change .hamburger__bar:nth-child(2) {
+  @apply opacity-0;
+}
+
+.change .hamburger__bar:nth-child(3) {
+  -webkit-transform: rotate(45deg) translate(-8px, -5px);
+  transform: rotate(45deg) translate(-8px, -5px);
 }
