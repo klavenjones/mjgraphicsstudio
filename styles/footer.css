@@ -10,6 +10,10 @@
   @apply text-center lg:text-left;
 }
 
+.footer__left p a {
+  @apply text-gray-800 hover:text-gray-500;
+}
+
 .footer__right {
   @apply flex space-x-3 justify-center lg:justify-end;
 }
