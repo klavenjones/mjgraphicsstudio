@@ -1,6 +1,6 @@
 .navbar-mobile,
 .navbar {
-  @apply w-full h-20 flex justify-between items-center py-12 px-4  md:px-10 lg:px-14;
+  @apply w-full h-20 flex justify-between items-center py-12 px-4 bg-white md:px-10 lg:px-14;
 }
 
 .navbar-mobile {
@@ -40,7 +40,7 @@
 .hamburger {
   width: 35px;
   top: 35px;
-  @apply absolute z-30 pointer-events-auto right-5 md:right-10 space-y-2 cursor-pointer focus-within:outline-none focus:outline-none;
+  @apply lg:hidden fixed z-30 pointer-events-auto right-5 md:right-10 space-y-2 cursor-pointer focus-within:outline-none focus:outline-none;
 }
 
 .hamburger__bar {

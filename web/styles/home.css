@@ -1,0 +1,15 @@
+.home-content {
+  @apply py-20 w-full px-10 md:px-14;
+}
+
+.home-content__gallery {
+  @apply mx-auto max-w-screen-2xl grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.home-content__gallery-item {
+  @apply col-span-1 bg-red-300;
+}
+
+.home-content__gallery-item img {
+  @apply w-full;
+}

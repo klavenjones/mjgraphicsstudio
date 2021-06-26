@@ -20,14 +20,14 @@ const socialNavigation = [
     icon: <FaTwitter className='icon' />,
     href: 'https://instagram.com'
   },
-  {
-    icon: <FaDribbble className='icon' />,
-    href: 'https://instagram.com'
-  },
-  {
-    icon: <FaBehanceSquare className='icon' />,
-    href: 'https://instagram.com'
-  }
+  // {
+  //   icon: <FaDribbble className='icon' />,
+  //   href: 'https://instagram.com'
+  // },
+  // {
+  //   icon: <FaBehanceSquare className='icon' />,
+  //   href: 'https://instagram.com'
+  // }
 ]
 
 export default function Footer() {

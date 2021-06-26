@@ -23,10 +23,10 @@ const navigation = [
     href: '/about',
     label: 'About'
   },
-  {
-    href: '/shop',
-    label: 'Shop'
-  }
+  // {
+  //   href: '/shop',
+  //   label: 'Shop'
+  // }
 ]
 
 const socialNavigation = [
@@ -38,14 +38,14 @@ const socialNavigation = [
     icon: <FaTwitter className='icon' />,
     href: 'https://instagram.com'
   },
-  {
-    icon: <FaDribbble className='icon' />,
-    href: 'https://instagram.com'
-  },
-  {
-    icon: <FaBehanceSquare className='icon' />,
-    href: 'https://instagram.com'
-  }
+  // {
+  //   icon: <FaDribbble className='icon' />,
+  //   href: 'https://instagram.com'
+  // },
+  // {
+  //   icon: <FaBehanceSquare className='icon' />,
+  //   href: 'https://instagram.com'
+  // }
 ]
 
 const sidebar = {
@@ -94,13 +94,15 @@ function Navigation() {
       <div className='navbar fixed-top'>
         <div className='nav-left'>
           {navigation.map((link, i) => (
-            <Link href={link.href}>
+            <Link href={link.href} key={i}>
               <a>{link.label}</a>
             </Link>
           ))}
         </div>
         <div className='logo'>
-          <a href=''>Mj Graphics Design</a>
+          <Link href='/'>
+            <a>Mj Graphics Design</a>
+          </Link>
         </div>
         <div className='nav-right'>
           {socialNavigation.map((link, i) => (
@@ -112,14 +114,14 @@ function Navigation() {
       </div>
 
       {/* Mobile Menu */}
-      <div className='navbar-mobile'>
+      <div className='navbar-mobile fixed-top'>
         <div className='logo'>
-          <Link href=''>
+          <Link href='/'>
             <a>MJ Graphics Design</a>
           </Link>
         </div>
-        <SideNavigation />
       </div>
+      <SideNavigation />
     </>
   )
 }

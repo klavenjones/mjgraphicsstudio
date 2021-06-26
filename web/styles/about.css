@@ -1,0 +1,32 @@
+.about-content {
+  @apply py-20 w-full;
+}
+
+.about-content__container {
+  @apply px-5 mx-auto max-w-screen-2xl grid grid-cols-1 gap-10 md:grid-cols-2;
+}
+
+.about-content__left img {
+  max-height: 611px;
+  max-width: 555px;
+  @apply w-full h-auto ml-auto;
+}
+
+.about-content__right {
+  @apply flex flex-col;
+}
+
+.about-content__right h2 {
+  @apply mb-10 font-semibold text-3xl md:text-4xl lg:text-5xl;
+}
+
+.about-content__right p {
+  max-width: 50ch;
+  @apply mb-10 text-base leading-7 lg:leading-7 lg:text-lg;
+}
+
+.about-content__right ul {
+  max-width: 50ch;
+  @apply mt-8 grid grid-cols-2 lg:gap-0 md:grid-cols-4 gap-y-2 text-lg lg:text-xl;
+}
+
