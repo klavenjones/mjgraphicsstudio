@@ -1,0 +1,19 @@
+.footer {
+  @apply w-full bottom-0 py-8 px-4 text-gray-500;
+}
+
+.footer__container {
+  @apply mx-auto max-w-screen-2xl grid grid-cols-1 gap-y-4 lg:gap-y-0 lg:grid-cols-2;
+}
+
+.footer__left {
+  @apply text-center lg:text-left;
+}
+
+.footer__right {
+  @apply flex space-x-3 justify-center lg:justify-end;
+}
+
+.footer__right a {
+  @apply transition-all duration-100 hover:text-gray-700;
+}

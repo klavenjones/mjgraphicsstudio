@@ -11,6 +11,10 @@
   @apply hidden lg:flex;
 }
 
+.navbar a {
+  @apply text-lg;
+}
+
 .nav-right,
 .nav-left {
   @apply flex items-center space-x-4;
@@ -21,7 +25,12 @@
 }
 
 .logo {
-  @apply text-center lg:flex-grow;
+  font-family: 'Lore', sans-serif;
+  @apply flex items-center justify-center lg:flex-grow;
+}
+
+.logo a {
+  @apply text-lg md:text-xl lg:text-2xl;
 }
 
 .fixed-top {
@@ -30,7 +39,8 @@
 
 .hamburger {
   width: 35px;
-  @apply space-y-2 cursor-pointer;
+  top: 35px;
+  @apply absolute z-30 pointer-events-auto right-5 md:right-10 space-y-2 cursor-pointer focus-within:outline-none focus:outline-none;
 }
 
 .hamburger__bar {
@@ -49,4 +59,36 @@
 .change .hamburger__bar:nth-child(3) {
   -webkit-transform: rotate(45deg) translate(-8px, -5px);
   transform: rotate(45deg) translate(-8px, -5px);
+}
+
+.mobile-nav {
+  @apply absolute top-0 left-0 bottom-0 w-full pointer-events-none;
+}
+
+.mobile-nav__background {
+  @apply absolute top-0 left-0 bottom-0 bg-gray-200 w-full pointer-events-none;
+}
+
+.mobile-nav__navigation {
+  @apply w-full top-24 absolute flex flex-col items-center justify-center space-y-5 p-6 pt-20 lg:hidden;
+}
+
+.mobile-nav__navigation li a {
+  @apply text-3xl transition-all duration-100 hover:text-gray-400 cursor-pointer pointer-events-auto;
+}
+
+.mobile-nav__navigation li:last-child {
+  @apply pt-14 flex flex-col items-center justify-center space-y-5 text-center text-2xl;
+}
+
+.mobile-nav__navigation li:last-child h3 {
+  @apply font-bold uppercase pb-10;
+}
+
+.mobile-nav__navigation li:last-child a {
+  @apply pt-4;
+}
+
+.mobile-nav__navigation .social {
+  @apply flex space-x-6 pt-1;
 }
