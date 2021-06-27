@@ -16,7 +16,7 @@ export default function Home({ artwork }) {
       exit={{ opacity: 0 }}
     >
       <Navigation />
-      <Gallery />
+      <Gallery artwork={artwork} />
       <Footer />
     </motion.div>
   )
@@ -24,7 +24,7 @@ export default function Home({ artwork }) {
 
 export const getStaticProps = async () => {
   let artwork
-  if (!Cache.has('artwork') || Cache.isExpired('artwork', 120)) {
+  if (!Cache.has('artwork') || Cache.isExpired('artwork', 90)) {
     artwork = await sanityClient.fetch(indexQuery)
     Cache.set('artwork', artwork)
   } else {

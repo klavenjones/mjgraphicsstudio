@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { imageUrlFor } from '../lib/sanity'
 
 const images = [
   {
@@ -49,15 +50,19 @@ const image = {
   show: { opacity: 1, y: 0 }
 }
 
-function Image({ image: { href, title } }) {
+function Image({ image: { artwork } }) {
+  console.log('Image', artwork)
   return (
     <motion.div variants={image} className='home-content__gallery-item'>
-      <img src={href} alt={title} />
+      <img
+        src={imageUrlFor(artwork).width(1000).height(1000).fit('fill').url()}
+        alt={artwork.title}
+      />
     </motion.div>
   )
 }
 
-export default function Gallery() {
+export default function Gallery({ artwork }) {
   return (
     <motion.main className='home-content'>
       <motion.div
@@ -66,7 +71,7 @@ export default function Gallery() {
         variants={imageContainer}
         className='home-content__gallery'
       >
-        {images.map((img) => (
+        {artwork.map((img) => (
           <Image image={img} key={img.id} />
         ))}
       </motion.div>
