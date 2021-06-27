@@ -1,8 +1,7 @@
 export default {
-  name: 'aboutme',
+  name: 'aboutMe',
   title: 'About Me',
   type: 'document',
-  description: 'Write a little about yourself',
   fields: [
     {
       name: 'title',
@@ -20,7 +19,8 @@ export default {
     {
       name: 'body',
       title: 'Body',
-      type: 'blockContent'
+      type: 'blockContent',
+      description: 'Write a little about yourself'
     }
   ]
 }
