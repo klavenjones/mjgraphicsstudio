@@ -3,10 +3,12 @@ import { motion } from 'framer-motion'
 import { Gallery } from '../components'
 import { Footer, Navigation } from '../components/shared'
 
+import Cache from '../util/cache'
+
 import { indexQuery, sanityClient } from '../lib/sanity'
 
 export default function Home({ artwork }) {
-
+  console.log(artwork)
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -21,7 +23,14 @@ export default function Home({ artwork }) {
 }
 
 export const getStaticProps = async () => {
-  const artwork = await sanityClient.fetch(indexQuery)
+  let artwork
+  if (!Cache.has('artwork') || Cache.isExpired('artwork', 120)) {
+    artwork = await sanityClient.fetch(indexQuery)
+    Cache.set('artwork', artwork)
+  } else {
+    artwork = Cache.get('artwork')
+  }
+
   return {
     props: { artwork }
   }
