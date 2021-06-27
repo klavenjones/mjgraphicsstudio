@@ -2,6 +2,7 @@
 
 # dependencies
 web/node_modules
+sanity-cms/node_modules
 web/.pnp
 .pnp.js
 
