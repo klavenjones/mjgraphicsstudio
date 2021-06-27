@@ -3,7 +3,10 @@ import { motion } from 'framer-motion'
 import { Gallery } from '../components'
 import { Footer, Navigation } from '../components/shared'
 
-export default function Home() {
+import { indexQuery, sanityClient } from '../lib/sanity'
+
+export default function Home({ artwork }) {
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -15,4 +18,11 @@ export default function Home() {
       <Footer />
     </motion.div>
   )
+}
+
+export const getStaticProps = async () => {
+  const artwork = await sanityClient.fetch(indexQuery)
+  return {
+    props: { artwork }
+  }
 }
