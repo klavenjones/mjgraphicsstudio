@@ -8,7 +8,6 @@ import Cache from '../util/cache'
 import { indexQuery, sanityClient } from '../lib/sanity'
 
 export default function Home({ artwork }) {
-  console.log(artwork)
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -24,10 +23,12 @@ export default function Home({ artwork }) {
 
 export const getStaticProps = async () => {
   let artwork
-  if (!Cache.has('artwork') || Cache.isExpired('artwork', 90)) {
+  if (!Cache.has('artwork') || Cache.isExpired('artwork', 300)) {
+    console.log('CACHE')
     artwork = await sanityClient.fetch(indexQuery)
     Cache.set('artwork', artwork)
   } else {
+    console.log('New Request')
     artwork = Cache.get('artwork')
   }
 

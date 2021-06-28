@@ -2,39 +2,6 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { imageUrlFor } from '../lib/sanity'
 
-const images = [
-  {
-    id: 1,
-    title: 'Placeholder',
-    href: 'https://via.placeholder.com/640'
-  },
-  {
-    id: 2,
-    title: 'Placeholder',
-    href: 'https://via.placeholder.com/640'
-  },
-  {
-    id: 3,
-    title: 'Placeholder',
-    href: 'https://via.placeholder.com/640'
-  },
-  {
-    id: 4,
-    title: 'Placeholder',
-    href: 'https://via.placeholder.com/640'
-  },
-  {
-    id: 5,
-    title: 'Placeholder',
-    href: 'https://via.placeholder.com/640'
-  },
-  {
-    id: 6,
-    title: 'Placeholder',
-    href: 'https://via.placeholder.com/640'
-  }
-]
-
 const imageContainer = {
   hidden: { opacity: 0 },
   show: {
@@ -51,7 +18,6 @@ const image = {
 }
 
 function Image({ image: { artwork } }) {
-  console.log('Image', artwork)
   return (
     <motion.div variants={image} className='home-content__gallery-item'>
       <img
@@ -72,7 +38,7 @@ export default function Gallery({ artwork }) {
         className='home-content__gallery'
       >
         {artwork.map((img) => (
-          <Image image={img} key={img.id} />
+          <Image image={img} key={img._id} />
         ))}
       </motion.div>
     </motion.main>

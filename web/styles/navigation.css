@@ -62,19 +62,21 @@
 }
 
 .mobile-nav {
-  @apply absolute top-0 left-0 bottom-0 w-full pointer-events-none;
+  @apply fixed top-0 left-0 bottom-0 w-full 
+    pointer-events-none;
 }
 
 .mobile-nav__background {
-  @apply absolute top-0 left-0 bottom-0 bg-gray-200 w-full pointer-events-none;
+  @apply fixed top-0 left-0 bottom-0 bg-gray-200 w-full
+    pointer-events-none;
 }
 
 .mobile-nav__navigation {
-  @apply w-full top-24 absolute flex flex-col items-center justify-center space-y-5 p-6 pt-20 lg:hidden;
+  @apply w-full top-24 fixed flex flex-col items-center justify-center space-y-5 p-6 pt-20 lg:hidden pointer-events-auto;
 }
 
 .mobile-nav__navigation li a {
-  @apply text-3xl transition-all duration-100 hover:text-gray-400 cursor-pointer pointer-events-auto;
+  @apply text-3xl transition-all duration-100 hover:text-gray-400 cursor-pointer;
 }
 
 .mobile-nav__navigation li:last-child {
