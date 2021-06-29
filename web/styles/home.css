@@ -1,5 +1,5 @@
 .home-content {
-  @apply py-20 w-full px-10 md:px-14;
+  @apply py-10 w-full px-10 md:px-14;
 }
 
 .home-content__gallery {
@@ -12,4 +12,8 @@
 
 .home-content__gallery-item img {
   @apply w-full;
+}
+
+.home-content__show-more {
+  @apply px-10 py-8 tracking-wider uppercase hover:text-gray-400 focus-within:outline-none focus:outline-none;
 }

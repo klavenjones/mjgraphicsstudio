@@ -6,6 +6,7 @@ import { Footer, Navigation } from '../components/shared'
 import Cache from '../util/cache'
 
 import { indexQuery, sanityClient } from '../lib/sanity'
+import Loader from '../components/shared/loader'
 
 const LIMIT = 3
 
@@ -40,8 +41,6 @@ export default function Home({ artwork }) {
     }
   }
 
-  // if (loading) return <h1 className='text-center text-5xl'>Loading......</h1>
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -51,13 +50,13 @@ export default function Home({ artwork }) {
       <Navigation />
       <Gallery artwork={art} />
       {art.length > 0 && !loading && !postEnd && (
-        <button
-          onClick={getMorePosts}
-          className='w-40 h-40 bg-gray-700 text-white'
-        >
-          GET MORE
-        </button>
+        <div className='w-full flex items-center justify-center'>
+          <button onClick={getMorePosts} className='home-content__show-more'>
+            Show more work
+          </button>
+        </div>
       )}
+      <Loader show={loading} />
       <Footer />
     </motion.div>
   )
@@ -66,7 +65,7 @@ export default function Home({ artwork }) {
 export const getStaticProps = async () => {
   let artwork
   if (!Cache.has('artwork') || Cache.isExpired('artwork', 300)) {
-    artwork = await sanityClient.fetch(`${indexQuery}[0..${LIMIT - 1}]`)
+    artwork = await sanityClient.fetch(`${indexQuery}[0..5]`)
     Cache.set('artwork', artwork)
   } else {
     artwork = Cache.get('artwork')

@@ -19,9 +19,14 @@ const image = {
 
 function Image({ image: { artwork } }) {
   return (
-    <motion.div variants={image} className='home-content__gallery-item'>
-      <img
+    <motion.div
+      variants={image}
+      whileHover={{ background: 'yellow' }}
+      className='home-content__gallery-item'
+    >
+      <motion.img
         src={imageUrlFor(artwork).width(1000).height(1000).fit('fill').url()}
+        whileHover={{ opacity: 0.85 }}
         alt={artwork.title}
       />
     </motion.div>

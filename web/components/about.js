@@ -3,7 +3,6 @@ import BlockContent from '@sanity/block-content-to-react'
 import { imageUrlFor } from '../lib/sanity'
 
 export default function About({ aboutMe }) {
-  console.log('ABOUT ME', aboutMe)
   return (
     <motion.main
       initial={{ opacity: 0, y: 50 }}
@@ -37,14 +36,14 @@ export default function About({ aboutMe }) {
               <a href=''>Email</a>
             </li>
             <li>
-              <a href=''>Instagram</a>
+              <a href=''>Dribbble </a>
             </li>
-            {/* <li>
+            <li>
               <a href=''>Behance</a>
             </li>
             <li>
-              <a href=''>Dribbble </a>
-            </li> */}
+              <a href=''>Instagram</a>
+            </li>
           </ul>
         </div>
       </div>

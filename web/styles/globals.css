@@ -22,3 +22,12 @@ body {
 @import './footer.css';
 @import './home.css';
 @import './about.css';
+
+.loader-container{
+  @apply w-full flex justify-center
+}
+
+.loader {
+  border-top-color: rgb(193, 193, 193);
+  @apply border-10 border-t-10  w-20 h-20 rounded-half animate-spin;
+}
