@@ -39,12 +39,12 @@ export default function About({ aboutMe }) {
             <li>
               <a href=''>Instagram</a>
             </li>
-            <li>
+            {/* <li>
               <a href=''>Behance</a>
             </li>
             <li>
               <a href=''>Dribbble </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const variants = {
   open: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 }
   },
   closed: {
     transition: { staggerChildren: 0.05, staggerDirection: -1 }
@@ -15,6 +15,7 @@ const navLinks = {
   open: {
     y: 0,
     opacity: 1,
+    visibility: 'visible',
     transition: {
       y: { stiffness: 1000, velocity: -100 }
     }
@@ -24,6 +25,9 @@ const navLinks = {
     opacity: 0,
     transition: {
       y: { stiffness: 1000 }
+    },
+    transitionEnd: {
+      visibility: 'hidden'
     }
   }
 }
@@ -32,6 +36,7 @@ const socialLinks = {
   open: {
     y: 0,
     opacity: 1,
+    visibility: 'visible',
     transition: {
       y: { stiffness: 1000, velocity: -100 },
       staggerChildren: 0.07,
@@ -45,6 +50,9 @@ const socialLinks = {
       y: { stiffness: 1000 },
       staggerChildren: 0.05,
       staggerDirection: -2
+    },
+    transitionEnd: {
+      visibility: 'hidden'
     }
   }
 }

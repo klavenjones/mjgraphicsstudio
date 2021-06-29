@@ -15,11 +15,11 @@ const socialNavigation = [
   {
     icon: <FaInstagram className='icon' />,
     href: 'https://instagram.com'
-  },
-  {
-    icon: <FaTwitter className='icon' />,
-    href: 'https://instagram.com'
-  },
+  }
+  // {
+  //   icon: <FaTwitter className='icon' />,
+  //   href: 'https://instagram.com'
+  // },
   // {
   //   icon: <FaDribbble className='icon' />,
   //   href: 'https://instagram.com'

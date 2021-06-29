@@ -20,6 +20,7 @@ module.exports = {
 
   isExpired(key, seconds) {
     const [_, timestamp] = cache.get(key)
+    console.log('CACHE', (Date.now() - timestamp) / 1000 > seconds)
     return (Date.now() - timestamp) / 1000 > seconds
   }
 }

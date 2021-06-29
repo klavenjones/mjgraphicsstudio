@@ -22,7 +22,7 @@ const navigation = [
   {
     href: '/about',
     label: 'About'
-  },
+  }
   // {
   //   href: '/shop',
   //   label: 'Shop'
@@ -33,11 +33,11 @@ const socialNavigation = [
   {
     icon: <FaInstagram className='icon' />,
     href: 'https://instagram.com'
-  },
-  {
-    icon: <FaTwitter className='icon' />,
-    href: 'https://instagram.com'
-  },
+  }
+  // {
+  //   icon: <FaTwitter className='icon' />,
+  //   href: 'https://instagram.com'
+  // },
   // {
   //   icon: <FaDribbble className='icon' />,
   //   href: 'https://instagram.com'
@@ -48,9 +48,29 @@ const socialNavigation = [
   // }
 ]
 
+// const sidebar = {
+//   open: (height = 1000) => ({
+//     clipPath: `circle(${height * 5 + 200}px at 94% 45px)`,
+//     transition: {
+//       type: 'spring',
+//       stiffness: 20,
+//       restDelta: 2
+//     }
+//   }),
+//   closed: {
+//     clipPath: 'circle(0px at 93% 45px)',
+//     transition: {
+//       delay: 0.5,
+//       type: 'spring',
+//       stiffness: 400,
+//       damping: 40
+//     }
+//   }
+// }
+
 const sidebar = {
   open: (height = 1000) => ({
-    clipPath: `circle(${height * 5 + 200}px at 94% 45px)`,
+    opacity: 1,
     transition: {
       type: 'spring',
       stiffness: 20,
@@ -58,7 +78,7 @@ const sidebar = {
     }
   }),
   closed: {
-    clipPath: 'circle(0px at 93% 45px)',
+    opacity: 0,
     transition: {
       delay: 0.5,
       type: 'spring',
@@ -74,17 +94,20 @@ function SideNavigation() {
   const { height } = useDimensions(containerRef)
 
   return (
-    <motion.nav
-      initial={false}
-      animate={isOpen ? 'open' : 'closed'}
-      custom={height}
-      ref={containerRef}
-      className='mobile-nav'
-    >
-      <motion.div className='mobile-nav__background' variants={sidebar} />
-      <MobileNavigation menuItems={navigation} social={socialNavigation} />
+    <>
       <MenuToggle toggle={toggleOpen} />
-    </motion.nav>
+      <motion.nav
+        initial={false}
+        animate={isOpen ? 'open' : 'closed'}
+        custom={height}
+        variants={sidebar}
+        ref={containerRef}
+        className='mobile-nav'
+      >
+        {/* <motion.div className='mobile-nav__background' variants={sidebar} /> */}
+        <MobileNavigation menuItems={navigation} social={socialNavigation} />
+      </motion.nav>
+    </>
   )
 }
 

@@ -13,6 +13,6 @@ const aboutMe = `
     selfie
 `
 
-export const indexQuery = `*[_type == 'artpiece']{${artWorkFields}}[0...6]`
+export const indexQuery = `*[_type == 'artpiece']{${artWorkFields}}`
 
 export const aboutMeQuery = `*[_type == 'aboutMe'][0]{${aboutMe}}`
