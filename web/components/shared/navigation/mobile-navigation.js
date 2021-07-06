@@ -81,21 +81,21 @@ function SocialMedia({ social }) {
       <motion.li variants={navLinks}>
         <h3>Get In Touch</h3>
         <p>
-          <Link href='mailto:klayboogie@gmail.com'>
+          <Link href='mailto:&#109;&#097;&#105;&#110;&#101;&#054;&#049;&#054;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;'>
             <a>hey@mjgraphics.design</a>
           </Link>
         </p>
         <motion.div variants={socialLinks} className='social'>
           {social.map((link, i) => (
-            <Link href={link.href} key={i}>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 1.1 }}
-                variants={socialLinks}
-              >
-                {link.icon}
-              </motion.a>
-            </Link>
+            <motion.a
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 1.1 }}
+              variants={socialLinks}
+              href={link.href}
+              key={i}
+            >
+              {link.icon}
+            </motion.a>
           ))}
         </motion.div>
       </motion.li>

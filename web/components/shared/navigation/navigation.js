@@ -32,7 +32,7 @@ const navigation = [
 const socialNavigation = [
   {
     icon: <FaInstagram className='icon' />,
-    href: 'https://instagram.com'
+    href: 'https://www.instagram.com/mj_graphics/'
   },
   // {
   //   icon: <FaTwitter className='icon' />,
@@ -40,33 +40,15 @@ const socialNavigation = [
   // },
   {
     icon: <FaDribbble className='icon' />,
-    href: 'https://instagram.com'
+    href: 'https://dribbble.com'
   },
   {
     icon: <FaBehanceSquare className='icon' />,
-    href: 'https://instagram.com'
+    href: 'https://www.behance.net/'
   }
 ]
 
-// const sidebar = {
-//   open: (height = 1000) => ({
-//     clipPath: `circle(${height * 5 + 200}px at 94% 45px)`,
-//     transition: {
-//       type: 'spring',
-//       stiffness: 20,
-//       restDelta: 2
-//     }
-//   }),
-//   closed: {
-//     clipPath: 'circle(0px at 93% 45px)',
-//     transition: {
-//       delay: 0.5,
-//       type: 'spring',
-//       stiffness: 400,
-//       damping: 40
-//     }
-//   }
-// }
+
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -114,7 +96,7 @@ function SideNavigation() {
 function Navigation() {
   return (
     <>
-      <div className='navbar fixed-top'>
+      <div className='navbar sticky-top'>
         <div className='nav-left'>
           {navigation.map((link, i) => (
             <Link href={link.href} key={i}>
@@ -124,7 +106,9 @@ function Navigation() {
         </div>
         <div className='logo'>
           <Link href='/'>
-            <a>Mj Graphics Design</a>
+            <a>
+              <img src='/nav__logo.png' alt='logo' />
+            </a>
           </Link>
         </div>
         <div className='nav-right'>
@@ -137,10 +121,12 @@ function Navigation() {
       </div>
 
       {/* Mobile Menu */}
-      <div className='navbar-mobile fixed-top'>
+      <div className='navbar-mobile sticky-top'>
         <div className='logo'>
           <Link href='/'>
-            <a>MJ Graphics Design</a>
+            <a>
+              <img src='/nav__logo.png' alt='logo' />
+            </a>
           </Link>
         </div>
       </div>

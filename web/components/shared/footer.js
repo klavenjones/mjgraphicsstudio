@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+import { sanityClient, socialQuery } from '../../lib/sanity'
 import Link from 'next/link'
 import {
   FaDribbble,
@@ -7,30 +9,37 @@ import {
   FaEnvelope
 } from 'react-icons/fa'
 
-const socialNavigation = [
-  {
-    icon: <FaEnvelope className='icon' />,
-    href: 'mailto:hey@'
-  },
-  {
-    icon: <FaInstagram className='icon' />,
-    href: 'https://instagram.com'
-  },
-  // {
-  //   icon: <FaTwitter className='icon' />,
-  //   href: 'https://instagram.com'
-  // },
-  {
-    icon: <FaDribbble className='icon' />,
-    href: 'https://instagram.com'
-  },
-  {
-    icon: <FaBehanceSquare className='icon' />,
-    href: 'https://instagram.com'
-  }
-]
-
 export default function Footer() {
+  const [social, setSocial] = useState(null)
+
+  useEffect(async () => {
+    let data = await sanityClient.fetch(socialQuery)
+    setSocial(data)
+  }, [])
+
+  const socialNavigation = [
+    {
+      icon: <FaEnvelope className='icon' />,
+      href: social?.email
+    },
+    {
+      icon: <FaInstagram className='icon' />,
+      href: social?.instagram
+    },
+    // {
+    //   icon: <FaTwitter className='icon' />,
+    //   href: 'https://instagram.com'
+    // },
+    {
+      icon: <FaDribbble className='icon' />,
+      href: social?.dribbble
+    },
+    {
+      icon: <FaBehanceSquare className='icon' />,
+      href: social?.behance
+    }
+  ]
+
   return (
     <footer className='footer'>
       <div className='footer__container'>
@@ -46,7 +55,7 @@ export default function Footer() {
         </div>
         <div className='footer__right'>
           {socialNavigation.map((link, i) => (
-            <Link href={link.href} key={i}>
+            <Link href={`mailto:${link.href}`} key={i}>
               <a>{link.icon}</a>
             </Link>
           ))}

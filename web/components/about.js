@@ -7,7 +7,7 @@ export default function About({ aboutMe }) {
     <motion.main
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ ease: 'easeIn', duration: 0.5 }}
+      transition={{ ease: 'backOut', duration: 0.75, delay: 0.5 }}
       className='about-content'
     >
       <div className='about-content__container'>

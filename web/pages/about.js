@@ -18,11 +18,9 @@ export default function AboutPage({ about }) {
 export const getStaticProps = async () => {
   let about
   if (!Cache.has('about') || Cache.isExpired('about', 600)) {
-    console.log('CACHE ABOUT')
     about = await sanityClient.fetch(aboutMeQuery)
     Cache.set('about', about)
   } else {
-    console.log('New Request')
     about = Cache.get('about')
   }
 

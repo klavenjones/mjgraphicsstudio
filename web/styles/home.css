@@ -1,5 +1,5 @@
 .home-content {
-  @apply py-10 w-full px-10 md:px-14;
+  @apply py-10 pt-14 w-full px-10 md:px-14;
 }
 
 .home-content__gallery {
@@ -7,7 +7,7 @@
 }
 
 .home-content__gallery-item {
-  @apply col-span-1 bg-red-300;
+  @apply col-span-1 bg-yellow-300;
 }
 
 .home-content__gallery-item img {

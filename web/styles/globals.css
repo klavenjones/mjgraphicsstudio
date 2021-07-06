@@ -6,12 +6,12 @@
 
 @font-face {
   font-family: 'Lore';
-  src: url('/public/fonts/LORERegular.woff') format('woff');
+  src: url('/public/fonts/LORERegular.woff2') format('woff2'),
+    url('/public/fonts/LORERegular.woff') format('woff');
 }
 
 body {
   font-family: 'Nunito Sans', sans-serif;
-  @apply pt-40;
 }
 html,
 body {
@@ -23,8 +23,8 @@ body {
 @import './home.css';
 @import './about.css';
 
-.loader-container{
-  @apply w-full flex justify-center
+.loader-container {
+  @apply w-full flex justify-center;
 }
 
 .loader {

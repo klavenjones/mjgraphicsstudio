@@ -37,7 +37,7 @@ export default function Home({ artwork }) {
         setPostEnd(true)
       }
     } catch (error) {
-      console.log(error.message)
+      throw new Error(error.message)
     }
   }
 
