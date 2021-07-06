@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import BlockContent from '@sanity/block-content-to-react'
 import { imageUrlFor } from '../lib/sanity'
 

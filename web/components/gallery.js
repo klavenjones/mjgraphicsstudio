@@ -56,7 +56,7 @@ function Image({ image: { artwork } }) {
       <motion.img
         src={imageUrlFor(artwork).width(1000).height(1000).fit('fill').url()}
         whileHover={{ opacity: 0.85, zIndex: 0 }}
-        alt={artwork.title}
+        alt={`${artwork.title} `}
       />
     </motion.div>
   )

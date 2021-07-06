@@ -12,9 +12,12 @@ import {
 export default function Footer() {
   const [social, setSocial] = useState(null)
 
-  useEffect(async () => {
-    let data = await sanityClient.fetch(socialQuery)
-    setSocial(data)
+  useEffect(() => {
+    async function fetch() {
+      let data = await sanityClient.fetch(socialQuery)
+      setSocial(data)
+    }
+    fetchData()
   }, [])
 
   const socialNavigation = [
