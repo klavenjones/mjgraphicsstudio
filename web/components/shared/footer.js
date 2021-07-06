@@ -13,7 +13,7 @@ export default function Footer() {
   const [social, setSocial] = useState(null)
 
   useEffect(() => {
-    async function fetch() {
+    async function fetchData() {
       let data = await sanityClient.fetch(socialQuery)
       setSocial(data)
     }
