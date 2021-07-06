@@ -34,16 +34,18 @@ export default function About({ aboutMe }) {
 
           <ul>
             <li>
-              <a href=''>Email</a>
+              <a href='mailto:&#109;&#097;&#105;&#110;&#101;&#054;&#049;&#054;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;'>
+                Email
+              </a>
             </li>
             <li>
-              <a href=''>Dribbble </a>
+              <a href='https://dribbble.com'>Dribbble </a>
             </li>
             <li>
-              <a href=''>Behance</a>
+              <a href='https://behance.net'>Behance</a>
             </li>
             <li>
-              <a href=''>Instagram</a>
+              <a href='https://www.instagram.com/mj_graphics/'>Instagram</a>
             </li>
           </ul>
         </div>
