@@ -1,17 +1,20 @@
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { About } from '../components'
-import { Footer, Navigation } from '../components/shared'
+import { Footer, Navigation, Meta } from '../components/shared'
 import Cache from '../util/cache'
 import { aboutMeQuery, sanityClient } from '../lib/sanity'
 
 export default function AboutPage({ about }) {
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <Navigation />
-      <About aboutMe={about} />
-      <Footer />
-    </motion.div>
+    <>
+      <Meta title='MJ Graphics Design Studio' />
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        <Navigation />
+        <About aboutMe={about} />
+        <Footer />
+      </motion.div>
+    </>
   )
 }
 

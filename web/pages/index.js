@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Gallery } from '../components'
-import { Footer, Navigation } from '../components/shared'
+import { Footer, Navigation, Meta } from '../components/shared'
 
 import Cache from '../util/cache'
 
@@ -42,23 +42,26 @@ export default function Home({ artwork }) {
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <Navigation />
-      <Gallery artwork={art} />
-      {art.length > 0 && !loading && !postEnd && (
-        <div className='w-full flex items-center justify-center'>
-          <button onClick={getMorePosts} className='home-content__show-more'>
-            Show more work
-          </button>
-        </div>
-      )}
-      <Loader show={loading} />
-      <Footer />
-    </motion.div>
+    <>
+      <Meta title="MJ Graphics Design Studio"/>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Navigation />
+        <Gallery artwork={art} />
+        {art.length > 0 && !loading && !postEnd && (
+          <div className='w-full flex items-center justify-center'>
+            <button onClick={getMorePosts} className='home-content__show-more'>
+              Show more work
+            </button>
+          </div>
+        )}
+        <Loader show={loading} />
+        <Footer />
+      </motion.div>
+    </>
   )
 }
 
