@@ -12,7 +12,7 @@ export default function Shop() {
           duration: 0.75,
           ease: 'easeIn'
         }}
-        className='text-4xl md:text-6xl lg:text-8xl relative uppercase font-semibold tracking-widest'
+        className='text-2xl sm:text-4xl md:text-6xl lg:text-8xl text-center relative uppercase font-semibold tracking-widest'
       >
         Shop coming soon.
         <motion.span
