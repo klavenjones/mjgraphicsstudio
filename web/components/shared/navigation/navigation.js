@@ -22,11 +22,11 @@ const navigation = [
   {
     href: '/about',
     label: 'About'
+  },
+  {
+    href: '/shop',
+    label: 'Shop'
   }
-  // {
-  //   href: '/shop',
-  //   label: 'Shop'
-  // }
 ]
 
 const socialNavigation = [
