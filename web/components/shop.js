@@ -17,7 +17,7 @@ export default function Shop() {
         Shop coming soon.
         <motion.span
           initial={{ y: 0 }}
-          animate={{ y: 450 }}
+          animate={{ y: 200 }}
           transition={{
             delay: 1.5,
             duration: 1.8,
