@@ -23,6 +23,24 @@
   @apply flex items-center space-x-4;
 }
 
+.shopping-cart {
+  @apply ml-8 flex items-center relative;
+}
+
+.shopping-cart-mobile {
+  @apply mr-16 sm:mr-20 flex items-center relative;
+}
+
+.shopping-cart-mobile .icon,
+.shopping-cart .icon {
+  @apply h-6 w-6;
+}
+
+.shopping-cart-mobile .cart-items,
+.shopping-cart .cart-items {
+  @apply absolute p-2 w-5 h-5 rounded-full flex items-center justify-center -top-4 -right-4 bg-black text-white text-xs font-medium;
+}
+
 .nav-right .icon {
   @apply h-6 w-6;
 }
@@ -105,4 +123,10 @@
 
 .mobile-nav__navigation .social {
   @apply flex space-x-6 pt-1 pointer-events-auto;
+}
+
+@media screen and (max-width: 325px) {
+  .logo {
+    @apply hidden;
+  }
 }

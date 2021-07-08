@@ -1,4 +1,6 @@
 export { default as About } from './about'
 export { default as Gallery } from './gallery'
 export { default as Shop } from './shop'
+export { default as Cart } from './cart'
+export { default as Products } from './products'
 export * from './shared'

@@ -4,13 +4,8 @@ import Link from 'next/link'
 
 import { useDimensions } from '../../../hooks/use-dimensions'
 
-import {
-  FaDribbble,
-  FaInstagram,
-  FaTwitter,
-  FaBehanceSquare,
-  FaBars
-} from 'react-icons/fa'
+import { FaDribbble, FaInstagram, FaBehanceSquare } from 'react-icons/fa'
+import { FiShoppingCart } from 'react-icons/fi'
 import MenuToggle from './menu-toggle'
 import MobileNavigation from './mobile-navigation'
 
@@ -47,8 +42,6 @@ const socialNavigation = [
     href: 'https://www.behance.net/'
   }
 ]
-
-
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -93,7 +86,7 @@ function SideNavigation() {
   )
 }
 
-function Navigation() {
+function Navigation({ shop }) {
   return (
     <>
       <div className='navbar sticky-top'>
@@ -118,6 +111,16 @@ function Navigation() {
             </Link>
           ))}
         </div>
+        {shop && (
+          <div className='shopping-cart'>
+            <Link href='#'>
+              <a>
+                <FiShoppingCart className='icon' />
+                <span className='cart-items'>1</span>
+              </a>
+            </Link>
+          </div>
+        )}
       </div>
 
       {/* Mobile Menu */}
@@ -129,6 +132,16 @@ function Navigation() {
             </a>
           </Link>
         </div>
+        {shop && (
+          <div className='shopping-cart-mobile'>
+            <Link href='#'>
+              <a>
+                <FiShoppingCart className='icon' />
+                <span className='cart-items'>1</span>
+              </a>
+            </Link>
+          </div>
+        )}
       </div>
       <SideNavigation />
     </>

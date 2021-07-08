@@ -9,6 +9,8 @@ import blockContent from './blockContent'
 import artPiece from './artPiece'
 import aboutMe from './aboutMe'
 import socialLinks from './socialLinks'
+import merch from './merch'
+import merchVariants from './merchVariants'
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
@@ -21,8 +23,10 @@ export default createSchema({
     aboutMe,
     artPiece,
     socialLinks,
+    merch,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
-    blockContent
+    blockContent,
+    merchVariants
   ])
 })
