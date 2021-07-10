@@ -32,10 +32,10 @@ export default async function handler(req, res) {
         },
         //The validated cart items are inserted.
         line_items,
-        success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `${req.headers.origin}/shop/result?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.origin}`
       }
-      
+
       const checkoutSession = await stripe.checkout.sessions.create(params)
 
       res.status(200).json(checkoutSession)

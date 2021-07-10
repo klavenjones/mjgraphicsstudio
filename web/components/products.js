@@ -23,7 +23,7 @@ export default function Products({ products }) {
           >
             Add To Cart
           </button>
-          <button onClick={() => removeItem(product._id)}>Remove</button>
+          <button onClick={() => removeItem(product.id)}>Remove</button>
         </div>
       ))}
     </div>
