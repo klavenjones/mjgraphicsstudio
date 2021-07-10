@@ -15,5 +15,5 @@
 }
 
 .home-content__show-more {
-  @apply px-10 py-8 tracking-wider uppercase hover:text-gray-400 focus-within:outline-none focus:outline-none;
+  @apply px-10 py-8 tracking-wider uppercase hover:text-gray-400 outline-none focus-within:outline-none focus:outline-none;
 }

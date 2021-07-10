@@ -1,30 +1,77 @@
+import { useState } from 'react'
 import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart'
 import { imageUrlFor } from '../lib/sanity'
 
-export default function Products({ products }) {
+function Product({ product }) {
   const { addItem, removeItem } = useShoppingCart()
-  console.log(products[1].defaultSize.price)
+  const [price, setPrice] = useState(product.defaultSize.price)
+  const [quantity, setQuantity] = useState(1)
+
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-      {products.map((product) => (
-        <div className='grid-cols-1' key={product._id}>
-          <img src={imageUrlFor(product.image).width(200)} alt={product.name} />
-          <h1>{product.name}</h1>
-          <p>
-            {formatCurrencyString({
-              value: product.defaultSize.price,
-              currency: 'usd'
-            })}
-          </p>
-          <button
-            onClick={() =>
-              addItem({ price: product.defaultSize.price, ...product })
-            }
-          >
-            Add To Cart
-          </button>
-          <button onClick={() => removeItem(product.id)}>Remove</button>
+    <div className='product'>
+      <img
+        src={imageUrlFor(product.image)
+          .width(500)
+          .height(500)
+          .fit('fill')
+          .url()}
+        alt={product.name}
+      />
+      <h2>{product.name}</h2>
+      <p>
+        {formatCurrencyString({
+          value: price,
+          currency: 'usd'
+        })}
+      </p>
+      <div className='product__buttons'>
+        <div className='product__select'>
+          <div className='frame-size'>
+            <label htmlFor='frame-size'> Frame Size:</label>
+            <select
+              onChange={(e) => setPrice(e.target.value)}
+              name='frame-size'
+              id='frame-size'
+            >
+              {/* <option>Choose Frame Size</option> */}
+              {product.frameSizes.map((size) => (
+                <option key={size._key} value={size.price}>{`${
+                  size.size
+                } sized poster - (${formatCurrencyString({
+                  value: size.price,
+                  currency: 'usd'
+                })})`}</option>
+              ))}
+            </select>
+          </div>
+          <div className='quantity'>
+            <label htmlFor='frame-size'>Quantity:</label>
+            <select
+              onChange={(e) => setQuantity(e.target.value)}
+              name='frame-size'
+              id='frame-size'
+            >
+              {/* <option>Choose Frame Size</option> */}
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, i) => (
+                <option key={i} value={item}>{`${item}`}</option>
+              ))}
+            </select>
+          </div>
         </div>
+        <button onClick={() => addItem({ price: price, ...product })}>
+          Add To Cart
+        </button>
+      </div>
+    </div>
+  )
+}
+
+export default function Products({ products }) {
+  console.log(products)
+  return (
+    <div className='products'>
+      {products.map((product) => (
+        <Product key={product._id} product={product} />
       ))}
     </div>
   )

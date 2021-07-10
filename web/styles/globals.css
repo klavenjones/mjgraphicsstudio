@@ -22,6 +22,7 @@ body {
 @import './footer.css';
 @import './home.css';
 @import './about.css';
+@import './shop.css';
 
 .loader-container {
   @apply w-full flex justify-center;

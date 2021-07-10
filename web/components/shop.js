@@ -6,9 +6,8 @@ import CartSummary from './cart-summary'
 
 export default function Shop({ products }) {
   return (
-    <main className='border w-full px-6 py-10'>
+    <main className='product-section'>
       <Products products={products} />
-      <CartSummary />
     </main>
   )
 }
