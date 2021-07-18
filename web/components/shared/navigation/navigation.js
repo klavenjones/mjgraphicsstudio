@@ -5,9 +5,10 @@ import Link from 'next/link'
 import { useDimensions } from '../../../hooks/use-dimensions'
 
 import { FaDribbble, FaInstagram, FaBehanceSquare } from 'react-icons/fa'
-import { FiShoppingCart } from 'react-icons/fi'
+
 import MenuToggle from './menu-toggle'
 import MobileNavigation from './mobile-navigation'
+import ShoppingCart from '../../shopping-cart'
 
 const navigation = [
   {
@@ -111,16 +112,7 @@ function Navigation({ shop }) {
             </Link>
           ))}
         </div>
-        {shop && (
-          <div className='shopping-cart'>
-            <Link href='#'>
-              <a>
-                <FiShoppingCart className='icon' />
-                <span className='cart-items'>1</span>
-              </a>
-            </Link>
-          </div>
-        )}
+        {shop && <ShoppingCart />}
       </div>
 
       {/* Mobile Menu */}
@@ -132,16 +124,7 @@ function Navigation({ shop }) {
             </a>
           </Link>
         </div>
-        {shop && (
-          <div className='shopping-cart-mobile'>
-            <Link href='#'>
-              <a>
-                <FiShoppingCart className='icon' />
-                <span className='cart-items'>1</span>
-              </a>
-            </Link>
-          </div>
-        )}
+        {shop && <ShoppingCart mobile/>}
       </div>
       <SideNavigation />
     </>

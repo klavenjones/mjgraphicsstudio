@@ -13,16 +13,27 @@
 body {
   font-family: 'Nunito Sans', sans-serif;
 }
-html,
-body {
-  height: 100%;
-}
 
 @import './navigation.css';
 @import './footer.css';
 @import './home.css';
 @import './about.css';
 @import './shop.css';
+@import './cart-summary.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.product__select select {
+  @apply appearance-none bg-transparent w-full pr-4 m-0 outline-none focus-within:outline-none;
+}
+
+select::-ms-expand {
+  display: none;
+}
 
 .loader-container {
   @apply w-full flex justify-center;

@@ -31,6 +31,19 @@ export default {
       name: 'shipping',
       type: 'number'
     },
+    // {
+    //   title: 'Price',
+    //   description:
+    //     'For now, add cents as zeroes, ie 500 = $5, or 7550 = $75.50',
+    //   name: 'price',
+    //   type: 'number'
+    // },
+    // {
+    //   title: 'Size',
+    //   description: 'Add frame size',
+    //   name: 'size',
+    //   type: 'string'
+    // }
     { name: 'defaultSize', title: 'Default Frame Size', type: 'merchVariant' },
     {
       name: 'frameSizes',

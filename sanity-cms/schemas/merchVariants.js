@@ -4,6 +4,7 @@ export default {
   type: 'object',
   fields: [
     { title: 'Size', name: 'size', type: 'string' },
+    // { title: 'Sku', name: 'sku', type: 'string' },
     {
       title: 'Price',
       description:

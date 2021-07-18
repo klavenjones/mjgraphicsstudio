@@ -14,26 +14,39 @@ export default async function handler(req, res) {
     try {
       // Validate the cart details that were sent from the client.
       const cartItems = req.body
-      console.log('cart items', cartItems)
       //Sanity client performs merchQuery
       let sanityData = await sanityClient.fetch(merchQuery)
-      console.log('SANITY DATA', sanityData)
+      //Let's get the different frame sizes      
+      let frameSizes = sanityData[0].frameSizes.map((size) => size.size)
+      //We will now create this array so we can retrieve all the different variants
+      let variantData = []
+      for (let size in frameSizes) {
+        for (let item of sanityData) {
+          variantData.push({
+            ...item,
+            id: `${item.id}-${frameSizes[size]}`,
+            price: item.frameSizes[size].price
+          })
+        }
+      }
+      
       // The POST request is then validated against the data from Sanity.
-      const line_items = validateCartItems(sanityData, cartItems)
-      console.log('LINE ITEMS', line_items)
+      const line_items = validateCartItems(variantData, cartItems)
+
       // Create Checkout Sessions from body params.
       const params = {
         submit_type: 'pay',
         mode: 'payment',
         payment_method_types: ['card'],
         billing_address_collection: 'auto',
+        shipping_rates: ['shr_1JEKgGD27TMEWY73SyaodeJ7'],
         shipping_address_collection: {
           allowed_countries: ['US', 'CA']
         },
         //The validated cart items are inserted.
         line_items,
         success_url: `${req.headers.origin}/shop/result?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${req.headers.origin}`
+        cancel_url: `${req.headers.origin}/shop/summary`
       }
 
       const checkoutSession = await stripe.checkout.sessions.create(params)
