@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart'
-import { fetchGet, fetchPost } from '../util/services'
+import { fetchPost } from '../util/services'
 
 function CartSummaryOG() {
   const [loading, setLoading] = useState(false)
@@ -84,6 +84,7 @@ function SummaryButtons({ emptyCart, checkOut }) {
 }
 
 function ShoppingItems({ product }) {
+  const { setItemQuantity, removeItem } = useShoppingCart()
   return (
     <div className='summary__shopping-item'>
       <div className='item-photo'>
@@ -96,7 +97,31 @@ function ShoppingItems({ product }) {
           <p>{product.name}</p>
           <p>{product.formattedValue}</p>
         </div>
-        <p></p>
+        <p>Size: {product.defaultSize.size}</p>
+        {/* <p>{product.description.slice(0, 30)}...</p> */}
+        <div className='item-buttons mt-3'>
+          <div className='quantity'>
+            <label htmlFor='frame-size'>Quantity:</label>
+            <div className='select'>
+              <select
+                defaultValue={product.quantity}
+                onChange={(e) =>
+                  setItemQuantity(product.id, Number(e.target.value))
+                }
+                name='frame-size'
+                id='frame-size'
+              >
+                {/* <option>{product.quantity}</option> */}
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, i) => (
+                  <option key={i} value={item}>{`${item}`}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </div>
+        <div className='item-buttons mt-5 ml-auto'>
+          <button onClick={() => removeItem(product.id)}>Remove</button>
+        </div>
       </div>
     </div>
   )
@@ -139,9 +164,13 @@ function CartSummary() {
       <div className='summary-container'>
         <div className='summary__shopping-bag'>
           <h2>Bag</h2>
-          {products.map((item, i) => (
-            <ShoppingItems key={item.id} product={item} />
-          ))}
+          {cartEmpty ? (
+            <h3>There are no items in your cart.</h3>
+          ) : (
+            products.map((item, i) => (
+              <ShoppingItems key={item.id} product={item} />
+            ))
+          )}
         </div>
         <div className='summary__summary-detail'>
           <h2>Summary</h2>

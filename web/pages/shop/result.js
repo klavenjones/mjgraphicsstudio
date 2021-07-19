@@ -1,5 +1,7 @@
 // web/pages/result.js
-
+import Head from 'next/head'
+import { motion } from 'framer-motion'
+import { Footer, Navigation, Meta, Result } from '../../components'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import useSWR from 'swr'
@@ -26,30 +28,14 @@ const ResultPage = () => {
   }
 
   return (
-    <div className='page-container'>
-      Congrats
-      <h1>Checkout Payment Result</h1>
-      <p>
-        With the data below, you can display a custom confirmation message to
-        your customer.
-      </p>
-      <p>For example:</p>
-      <hr />
-      <h3>
-        Thank you, {data?.payment_intent.charges.data[0].billing_details.name}.
-      </h3>
-      <p>
-        Confirmation email sent to{' '}
-        {data?.payment_intent.charges.data[0].billing_details.email}.
-      </p>
-      <hr />
-      <h2>Status: {data?.payment_intent?.status ?? 'loading...'}</h2>
-      <h3>CheckoutSession response:</h3>
-      <PrintObject content={data ?? 'loading...'} />
-      <Link href='/'>
-        <a>Back home</a>
-      </Link>
-    </div>
+    <>
+      <Meta title='MJ Graphics Design Studio' />
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        <Navigation />
+        <Result result={data} />
+        <Footer />
+      </motion.div>
+    </>
   )
 }
 

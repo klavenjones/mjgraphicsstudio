@@ -20,6 +20,7 @@ body {
 @import './about.css';
 @import './shop.css';
 @import './cart-summary.css';
+@import './result.css';
 
 *,
 *::before,
