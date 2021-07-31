@@ -1,5 +1,5 @@
 .summary-content {
-  @apply py-10 pt-14 w-full px-10 md:px-14;
+  @apply py-10 pt-14 w-full h-screen px-10 md:px-14;
 }
 
 .summary-container {

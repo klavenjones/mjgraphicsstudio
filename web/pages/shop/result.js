@@ -1,9 +1,10 @@
 // web/pages/result.js
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { Footer, Navigation, Meta, Result } from '../../components'
+import { Footer, Navigation, Meta, Result, Cart } from '../../components'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+
 import useSWR from 'swr'
 import { fetchGet } from '../../util/services'
 
@@ -14,6 +15,8 @@ const PrintObject = ({ content }) => {
 
 const ResultPage = () => {
   const router = useRouter()
+
+
   // Fetch CheckoutSession from static page via
   // https://nextjs.org/docs/basic-features/data-fetching#static-generation
   const { data, error } = useSWR(
@@ -27,14 +30,17 @@ const ResultPage = () => {
     return <div>failed to load</div>
   }
 
+
   return (
     <>
       <Meta title='MJ Graphics Design Studio' />
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        <Navigation />
-        <Result result={data} />
-        <Footer />
-      </motion.div>
+      <Cart>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <Navigation />
+          <Result result={data} />
+          <Footer />
+        </motion.div>
+      </Cart>
     </>
   )
 }

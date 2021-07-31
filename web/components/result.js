@@ -1,10 +1,17 @@
+import { useEffect } from 'react'
 import Link from 'next/link'
 import { FiCheck } from 'react-icons/fi'
 import { Loader } from './shared'
+import { useShoppingCart } from 'use-shopping-cart'
 
 export default function Result({ result }) {
-  if (!result) return <Loader />
+  const { clearCart } = useShoppingCart()
 
+  useEffect(() => {
+    clearCart()
+  }, [])
+
+  if (!result) return <Loader />
   const { receipt_url } = result?.payment_intent.charges.data[0]
 
   return (
@@ -18,6 +25,7 @@ export default function Result({ result }) {
         <p>
           You can find a receipt for your order{' '}
           <a
+            target='_blank'
             href={result?.payment_intent.charges.data[0].receipt_url}
             className='bold'
           >
