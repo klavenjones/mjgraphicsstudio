@@ -40,3 +40,6 @@ export const aboutMeQuery = `*[_type == 'aboutMe'][0]{${aboutMe}}`
 export const socialQuery = `*[_type == 'socialLinks'][0]{${social}}`
 
 export const merchQuery = `*[_type == 'merch']{${merch}}`
+
+export const productQuery = (id) =>
+  `*[_type == 'merch' && _id == "${id}"]{${merch}}`

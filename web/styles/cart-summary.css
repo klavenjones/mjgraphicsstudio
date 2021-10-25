@@ -1,5 +1,5 @@
 .summary-content {
-  @apply py-10 pt-14 w-full h-screen px-10 md:px-14;
+  @apply py-10 pt-14 w-full h-full min-h-screen px-10 md:px-14;
 }
 
 .summary-container {
@@ -36,18 +36,26 @@
   @apply font-bold;
 }
 
+.detail-buttons,
 .summary__buttons {
   @apply flex flex-col space-y-3 py-3;
 }
 
+.detail-buttons button,
 .summary__buttons button {
   @apply uppercase tracking-wide py-4 px-8;
 }
+
 .summary__buttons button:last-child {
   @apply transition-all duration-150 rounded-md border bg-gray-900 text-white hover:text-white hover:border-gray-400 hover:bg-gray-400;
 }
+
 .summary__buttons button:first-child {
   @apply transition-all duration-150 rounded-md border border-gray-900 text-gray-900 hover:text-white hover:border-gray-400 hover:bg-gray-400;
+}
+
+.detail-buttons button {
+  @apply transition-all duration-150 rounded-md border bg-gray-900 text-white hover:text-white hover:border-gray-400 hover:bg-gray-400;
 }
 
 .disabled {

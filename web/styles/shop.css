@@ -76,3 +76,7 @@ select,
 .frame-size select {
   @apply px-1 w-full;
 }
+
+.toast {
+  @apply bg-green-500;
+}

@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react'
-import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart'
-import { fetchPost } from '../util/services'
+import { useState, useEffect } from "react";
+import { useShoppingCart, formatCurrencyString } from "use-shopping-cart";
+import { fetchPost } from "../util/services";
+import toast, { Toaster } from "react-hot-toast";
 
 function CartSummaryOG() {
-  const [loading, setLoading] = useState(false)
-  const [cartEmpty, setCartEmpty] = useState(true)
+  const [loading, setLoading] = useState(false);
+  const [cartEmpty, setCartEmpty] = useState(true);
 
   const {
     formattedTotalPrice,
@@ -12,24 +13,27 @@ function CartSummaryOG() {
     clearCart,
     cartDetails,
     redirectToCheckout
-  } = useShoppingCart()
+  } = useShoppingCart();
 
-  useEffect(() => setCartEmpty(!cartCount), [cartCount])
+  useEffect(() => setCartEmpty(!cartCount), [cartCount]);
 
   const handleCheckout = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    const response = await fetchPost('/api/checkout_sessions/cart', cartDetails)
+    e.preventDefault();
+    setLoading(true);
+    const response = await fetchPost(
+      "/api/checkout_sessions/cart",
+      cartDetails
+    );
     if (response.statusCode === 500) {
-      console.error(response.message)
-      return
+      console.error(response.message);
+      return;
     }
 
-    redirectToCheckout({ sessionId: response.id })
-  }
+    redirectToCheckout({ sessionId: response.id });
+  };
 
   return (
-    <div className='pt-20 border'>
+    <div className="pt-20 border">
       <form onSubmit={handleCheckout}>
         <h2>Cart Summary</h2>
 
@@ -41,75 +45,84 @@ function CartSummaryOG() {
         </p>
         <p>Use 4242 4242 4242 4242 as the card number.</p>
         <button
-          className='cart-style-background'
-          type='submit'
+          className="cart-style-background"
+          type="submit"
           disabled={cartEmpty || loading}
         >
-          Checkout <div className='card-number'></div>
+          Checkout <div className="card-number"></div>
         </button>
         <button
-          className='cart-style-background'
-          type='button'
+          className="cart-style-background"
+          type="button"
           onClick={clearCart}
         >
           Clear Cart
         </button>
       </form>
     </div>
-  )
+  );
 }
 
 function DisabledButtons() {
   return (
-    <div className='summary__buttons'>
-      <button disabled className='disabled'>
+    <div className="summary__buttons">
+      <button disabled className="disabled">
         Clear Cart
       </button>
-      <button className='disabled'>Checkout</button>
+      <button className="disabled">Checkout</button>
     </div>
-  )
+  );
 }
 
 function SummaryButtons({ emptyCart, checkOut }) {
   return (
-    <div className='summary__buttons'>
-      <button type='button' onClick={emptyCart}>
+    <div className="summary__buttons">
+      <button
+        type="button"
+        onClick={() => {
+          emptyCart();
+          toast("Your cart has been emptied.", {
+            duration: 2500,
+            position: "top-center"
+          });
+        }}
+      >
         Clear Cart
       </button>
-      <button type='submit' onClick={checkOut}>
+      <button type="submit" onClick={checkOut}>
         Checkout
       </button>
     </div>
-  )
+  );
 }
 
 function ShoppingItems({ product }) {
-  const { setItemQuantity, removeItem } = useShoppingCart()
+  const { setItemQuantity, removeItem } = useShoppingCart();
   return (
-    <div className='summary__shopping-item'>
-      <div className='item-photo'>
-        <div className='photo-container'>
+    <div className="summary__shopping-item">
+      <div className="item-photo">
+        <div className="photo-container">
           <img src={product.image} alt={product.name} />
         </div>
       </div>
-      <div className='item-description'>
-        <div className='item-price'>
+      <div className="item-description">
+        <div className="item-price">
           <p>{product.name}</p>
           <p>{product.formattedValue}</p>
         </div>
         <p>Size: {product.defaultSize.size}</p>
         {/* <p>{product.description.slice(0, 30)}...</p> */}
-        <div className='item-buttons mt-3'>
-          <div className='quantity'>
-            <label htmlFor='frame-size'>Quantity:</label>
-            <div className='select'>
+        <div className="item-buttons mt-3">
+          <div className="quantity">
+            <label htmlFor="frame-size">Quantity:</label>
+            <div className="select">
               <select
                 defaultValue={product.quantity}
                 onChange={(e) =>
                   setItemQuantity(product.id, Number(e.target.value))
                 }
-                name='frame-size'
-                id='frame-size'
+                name="frame-size"
+                id="frame-size"
               >
                 {/* <option>{product.quantity}</option> */}
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, i) => (
@@ -119,18 +132,28 @@ function ShoppingItems({ product }) {
             </div>
           </div>
         </div>
-        <div className='item-buttons mt-5 ml-auto'>
-          <button onClick={() => removeItem(product.id)}>Remove</button>
+        <div className="item-buttons mt-5 ml-auto">
+          <button
+            onClick={() => {
+              removeItem(product.id);
+              toast("Your removed this item from your cart.", {
+                duration: 2500,
+                position: "top-center"
+              });
+            }}
+          >
+            Remove
+          </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function CartSummary() {
-  const [loading, setLoading] = useState(false)
-  const [shipping, setShipping] = useState(500)
-  const [cartEmpty, setCartEmpty] = useState(true)
+  const [loading, setLoading] = useState(false);
+  const [shipping, setShipping] = useState(500);
+  const [cartEmpty, setCartEmpty] = useState(true);
 
   const {
     formattedTotalPrice,
@@ -139,30 +162,33 @@ function CartSummary() {
     clearCart,
     cartDetails,
     redirectToCheckout
-  } = useShoppingCart()
+  } = useShoppingCart();
 
-  // console.log(cartDetails)
 
-  useEffect(() => setCartEmpty(!cartCount), [cartCount])
 
-  const products = Object.values(cartDetails)
+  useEffect(() => setCartEmpty(!cartCount), [cartCount]);
+
+  const products = Object.values(cartDetails);
 
   const handleCheckout = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    const response = await fetchPost('/api/checkout_sessions/cart', cartDetails)
+    e.preventDefault();
+    setLoading(true);
+    const response = await fetchPost(
+      "/api/checkout_sessions/cart",
+      cartDetails
+    );
     if (response.statusCode === 500) {
-      console.error(response.message)
-      return
+      console.error(response.message);
+      return;
     }
 
-    redirectToCheckout({ sessionId: response.id })
-  }
+    redirectToCheckout({ sessionId: response.id });
+  };
 
   return (
-    <main className='summary-content'>
-      <div className='summary-container'>
-        <div className='summary__shopping-bag'>
+    <main className="summary-content">
+      <div className="summary-container">
+        <div className="summary__shopping-bag">
           <h2>Bag</h2>
           {cartEmpty ? (
             <h3>There are no items in your cart.</h3>
@@ -172,28 +198,28 @@ function CartSummary() {
             ))
           )}
         </div>
-        <div className='summary__summary-detail'>
+        <div className="summary__summary-detail">
           <h2>Summary</h2>
-          <div className='summary__item'>
+          <div className="summary__item">
             <p>Subtotal</p>
             <p>{formattedTotalPrice}</p>
           </div>
-          <div className='summary__item'>
+          <div className="summary__item">
             <p>Estimated Shipping & Handling</p>
             <p>
               {cartEmpty
                 ? `$0.00`
-                : formatCurrencyString({ value: shipping, currency: 'usd' })}
+                : formatCurrencyString({ value: shipping, currency: "usd" })}
             </p>
           </div>
-          <div className='summary__item total'>
+          <div className="summary__item total">
             <p>Total</p>
             <p>
               {cartEmpty
                 ? `$0.00`
                 : formatCurrencyString({
                     value: `${totalPrice + shipping}`,
-                    currency: 'usd'
+                    currency: "usd"
                   })}
             </p>
           </div>
@@ -206,8 +232,16 @@ function CartSummary() {
           </form>
         </div>
       </div>
+      <Toaster
+        containerStyle={{
+          top: 65,
+          left: 20,
+          bottom: 20,
+          right: 20
+        }}
+      />
     </main>
-  )
+  );
 }
 
-export default CartSummary
+export default CartSummary;
